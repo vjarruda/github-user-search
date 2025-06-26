@@ -1,1 +1,6 @@
-@import "primeicons/primeicons.css";
+body {
+  background-color: white;
+  color: black;
+  margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

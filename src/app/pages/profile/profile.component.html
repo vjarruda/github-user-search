@@ -1,5 +1,41 @@
-<p>profile works!</p>
-@if(user; as u){
-    <a>{{ u.name }}</a><br>
-    <a>{{ u.bio }}</a>
-}
+<body>
+  <header>
+    <div class="logo">Search d_evs</div>
+    <div class="search-bar">
+      <input placeholder="Username" />
+    </div>
+  </header>
+
+  <main>
+    @if(user; as u){
+    <div class="profile-card">
+      <img [src]="u.avatar_url" width="100" />
+      <div class="profile-info">
+        <h3>{{ u.name }}</h3>
+        <p>{{ u.login }}</p>
+        <p>{{ u.bio }}</p>
+        <ul>
+          <li>{{ u.followers }} seguidores</li>
+          <li>{{ u.following }} seguindo</li>
+          <br />
+          <li>{{ u.company }}</li>
+          <li>{{ u.location }}</li>
+          <li>{{ u.email }}</li>
+          <li>{{ u.blog }}</li>
+          <li>{{ u.twitter_username }}</li>
+        </ul>
+        <div class="contact-button">Contato</div>
+      </div>
+    </div>
+
+    @for(repo of repos; track repo.name){
+    <div class="repos">
+      <li>
+        <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a> ⭐{{ repo.stargazers_count }}
+        <a>{{ repo.description }}</a>
+        <a>{{ getRelativeTime(repo.updated_at) }}</a>
+      </li>
+    </div>
+    } }
+  </main>
+</body>
