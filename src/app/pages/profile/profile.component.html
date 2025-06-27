@@ -2,10 +2,15 @@
   <header>
     <div class="logo">Search d_evs</div>
     <div class="search-bar">
-      <input placeholder="Username" />
+      @if(user; as u){
+      <input placeholder="{{ u.login }}" />
+      }
     </div>
   </header>
-
+  <button class="back-button" (click)="goBack()">
+    <fa-icon [icon]="faArrowLeft"></fa-icon>
+    Voltar
+  </button>
   <main>
     @if(user; as u){
     <div class="profile-card">
@@ -14,28 +19,60 @@
         <h3>{{ u.name }}</h3>
         <p>{{ u.login }}</p>
         <p>{{ u.bio }}</p>
-        <ul>
-          <li>{{ u.followers }} seguidores</li>
-          <li>{{ u.following }} seguindo</li>
-          <br />
-          <li>{{ u.company }}</li>
-          <li>{{ u.location }}</li>
-          <li>{{ u.email }}</li>
-          <li>{{ u.blog }}</li>
-          <li>{{ u.twitter_username }}</li>
-        </ul>
-        <div class="contact-button">Contato</div>
+        <p>
+          <fa-icon [icon]="faUsers"></fa-icon>
+          {{ u.followers }} seguidores
+        </p>
+        <p>
+          <fa-icon [icon]="faHeart"></fa-icon>
+          {{ u.following }} seguindo
+        </p>
+        @if(u.company){
+        <p>
+          <fa-icon [icon]="faBuilding"></fa-icon>
+          {{ u.company }}
+        </p>
+        } @if(u.location){
+        <p>
+          <fa-icon [icon]="faLocationDot"></fa-icon>
+          {{ u.location }}
+        </p>
+        } @if(u.email){
+        <p>
+          <fa-icon [icon]="faEnvelope"></fa-icon>
+          {{ u.email }}
+        </p>
+        } @if(u.blog){
+        <a [href]="u.blog">
+          <fa-icon [icon]="faLink"></fa-icon>
+          {{ u.blog }}
+        </a>
+        } @if(u.twitter_username){
+        <a [href]="'https://x.com/' + u.twitter_username" target="_blank">
+          <fa-icon [icon]="faTwitter"></fa-icon>
+          {{ u.twitter_username }}
+        </a>
+        }
+        <button (click)="openProfile(u.html_url)" class="contact-button">Contato</button>
       </div>
     </div>
 
-    @for(repo of repos; track repo.name){
     <div class="repos">
-      <li>
-        <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a> ⭐{{ repo.stargazers_count }}
-        <a>{{ repo.description }}</a>
-        <a>{{ getRelativeTime(repo.updated_at) }}</a>
-      </li>
+      @for(repo of repos; track repo.name){
+        <div class="repo">
+          <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+          <br />
+          <a>{{ repo.description }}</a>
+          <div class="repo-footer">
+            <a>
+              <fa-icon [icon]="faStar"></fa-icon>
+              {{ repo.stargazers_count }} -
+            </a>
+            <a>Atualizado {{ getRelativeTime(repo.updated_at) }}</a>
+          </div>
+        </div>
+      }
     </div>
-    } }
-  </main>
+  }
+</main>
 </body>
