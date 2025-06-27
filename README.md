@@ -10,21 +10,21 @@ Aplicação feita em Angular que permite a pesquisa de perfis de usuários do Gi
 
 ## Como rodar o projeto localmente
 
-- **Clone o repositório:** 
-`git clone https://github.com/vjarruda/github-user-search.git`
+- **Clone o repositório:**  
+`git clone https://github.com/vjarruda/github-user-search.git`  
 `cd github-user-search`
 
-- **Instale as dependências:**
+- **Instale as dependências:**  
 `npm install`
 
-- **Para executar o ambiente de desenvilvimento:**
+- **Para executar o ambiente de desenvilvimento:**  
 `ng serve`
 
-- **Para rodar a build de deploy da aplicação:**
- `Instale o http-server com o comando: npm i -g http-server`
- `Faça o build da aplicação com o comando: ng build`
- `Navegue ate a pasta onde foi feito o build: cd .\dist\github-user-search\browser\`
- `Execute o build com o comando: http-server`
+- **Para rodar a build de deploy da aplicação:**  
+ `Instale o http-server com o comando: npm i -g http-server`  
+ `Faça o build da aplicação com o comando: ng build`  
+ `Navegue ate a pasta onde foi feito o build: cd .\dist\github-user-search\browser\`  
+ `Execute o build com o comando: http-server`  
 
  ## Motivação das escolhas técnicas
 
@@ -41,11 +41,11 @@ Aplicação feita em Angular que permite a pesquisa de perfis de usuários do Gi
 `Preferi fazer o css na mão por ter mais familiaridade`
 
 ## Estrutura do Projeto 
-src/
-├── app/
-│   ├── pages/             # Páginas principais da aplicação (busca, perfil)
-│   ├── services/          # Serviços para integração com a API do GitHub
-│   ├── models/            # Interfaces dos dados utilizados
-│   ├── app.component.ts   # Componente raiz
-│   └── app.module.ts      # Módulo principal
-└── index.html             # Arquivo principal HTML
+src/  
+├── app/  
+│   ├── pages/             # Páginas principais da aplicação (busca, perfil)  
+│   ├── services/          # Serviços para integração com a API do GitHub  
+│   ├── models/            # Interfaces dos dados utilizados  
+│   ├── app.component.ts   # Componente raiz  
+│   └── app.module.ts      # Módulo principal  
+└── index.html             # Arquivo principal HTML  
